@@ -26,7 +26,9 @@ stop() {
 
 echo "Starting sshd"
 trap stop SIGINT SIGTERM
-/usr/sbin/sshd -D &
+# Log to the stdout of process with id 1 (this script since it is the entrypoint in the docker)
+# This way the sshd logs show up in the container logs
+/usr/sbin/sshd -D -E /proc/1/fd/1 &
 pid="$!"
 mkdir -p /var/run/sshd && echo "${pid}" > /var/run/sshd/sshd.pid
 wait "${pid}" && exit $?
