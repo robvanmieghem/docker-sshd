@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:latest
 
 MAINTAINER Rob Van Mieghem <robvanmieghem@gmail.com>
 
