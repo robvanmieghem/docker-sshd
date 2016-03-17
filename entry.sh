@@ -8,7 +8,7 @@ if [ ! -f /etc/ssh/ssh_host_* ]; then
         ssh-keygen -A
 fi
 
-mkdir /root/.ssh
+mkdir -p /root/.ssh
 echo $1 > /root/.ssh/authorized_keys
 
 chmod 700 ~/.ssh/ && chmod 600 ~/.ssh/*
